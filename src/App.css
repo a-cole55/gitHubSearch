@@ -5,6 +5,7 @@ html,body{
 *{
   box-sizing: border-box;
   color:white;
+  margin:0;
 }
 
 .App-header {
