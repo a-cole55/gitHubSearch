@@ -39,7 +39,7 @@ function Home() {
       </div>
     <div id="search">
       <input id="query" value={query} onChange={handleQueryInput} type="text" placeholder='Enter Username' />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} id="homeSearchBTN">Search</button>
     </div>
 
   </div>

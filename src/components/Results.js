@@ -1,14 +1,18 @@
 import React from 'react'
 
-function Results() {
+function Results(props) {
   return (
-    <div>
-        <h2>Name</h2>
-        <img src="" alt="profile"></img>
-        <p>Profile Description</p>
-        <span>Number of Followers</span>
-        <span>Number of Repositories</span>
-        <span>Location</span>
+    <div className='queryResult'>
+        <img src={props.img} alt="profile" className='searchImg' />
+        <div id="userInfo">
+          <h2>{props.name}</h2>
+          <p>{props.description}</p>
+          <div className='additionalInfo'>
+            <span>{props.followers}</span>
+            <span>{props.repos}</span>
+            <span>{props.location}</span>
+          </div>
+        </div>
 
     </div>
   )
