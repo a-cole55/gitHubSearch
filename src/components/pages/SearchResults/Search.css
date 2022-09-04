@@ -1,3 +1,10 @@
+#searchPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
 header, nav{
     background-color: black;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -9,6 +16,12 @@ nav{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+#navSearch{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 ul{
     display:flex;
@@ -48,16 +61,34 @@ input[type="text"] {
     border: 2px solid #e8eeef;
     font-size: 14px;
     height: 40px;
-    margin: 0 10px 0 0;
+    margin: 0 0.25px 0 0;
     outline: 0;
-    width: 350px;
+    width: 300px;
     color: white;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    border-radius: 5px;
     text-align: justify;
     text-indent: 10px;
-  }
-  #logo{
-    width:40px;
-    margin: 0 20px;
-  }
+    border-radius: 8px 0 0 8px;
+}
+#logo{
+  width:40px;
+  margin: 0 10px 0 30px;
+}
+h6{
+    margin-right: 20px;
+    font-size: 18px;
+}
+#navSearchBTN{
+  padding: 8.1px 17px 8.5px 17px;
+  width: auto;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1);
+  border-radius: 1.5px 8px 8px 0;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.pagination{
+    border-top: 2px solid white;
+    width: 100%;
+    margin: 10px 20px;
+}
