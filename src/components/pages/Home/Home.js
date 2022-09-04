@@ -1,6 +1,7 @@
 import axios from '../../../axios';
 import React, { useState } from 'react';
 import './Home.css';
+import logo from "../../../assets/github.png"
 
 function Home() {
 
@@ -30,19 +31,14 @@ function Home() {
     await fetchUsers();
 
   }
-  // const getResults = () => {
-  //   Axios.get("https://api.github.com/search/users?q=example")
-  //   .then((response) => {
-  //     console.log(response)
-  //   })
-
-  // }
 
   return (
     <div className="Home">
-    <h1> GitHub Search </h1>
+      <div id="header"><img src={logo} alt="github logo" />
+      <h1> GitHub Search </h1>
+      </div>
     <div id="search">
-      <input value={query} onChange={handleQueryInput} type="text" placeholder='Enter Search' />
+      <input id="query" value={query} onChange={handleQueryInput} type="text" placeholder='Enter Username' />
       <button onClick={handleSearch}>Search</button>
     </div>
 
