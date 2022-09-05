@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-function Results(props) {
+function Results(props, {user}) {
+
   return (
     <div className='queryResult'>
         <img src={props.img} alt="profile" className='searchImg' />
@@ -12,7 +13,7 @@ function Results(props) {
             <span>{props.repos} repositories</span>
             <span>Location: {props.location}</span>
           </div>
-          <a href={props.url}>View Profile</a>
+          <a href={props.url} target="_blank" rel="noreferrer" >View Profile</a>
         </div>
 
     </div>

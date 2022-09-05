@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-            <Route path="/" element={<Home users={users} setUsers={setUsers} query={query} setQuery={setQuery}/>} />
+            <Route path="/" element={<Home query={query} setQuery={setQuery}/>} />
             <Route path="/search" element={<Search users={users} setUsers={setUsers} query={query}/>} />
           </Routes>
 

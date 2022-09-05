@@ -1,6 +1,5 @@
-import axios from '../../../axios';
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Home.css';
 import logo from "../../../assets/github.png";
 import { SearchOutlined } from '@ant-design/icons';
@@ -8,7 +7,9 @@ import SwitchBTN from '../../SwitchBTN';
 
 
 function Home(props) {
-
+  //Navigate to Search Page
+  const navigate = useNavigate();
+  const goToSearchPage = () => navigate('/search')
 
   // const [query, setQuery] = useState("");
   const query = props.query;
@@ -21,10 +22,8 @@ function Home(props) {
     setDarkMode(darkMode => !darkMode);
     console.log("Dark Mode Changed")
   }
-  //Users fetched from API
-  const users = props.users;
-  const setUsers = props.setUsers;
 
+  //Hover Effect for Search Bar
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive(current => !current);
@@ -36,31 +35,12 @@ function Home(props) {
 
   }
 
-
-  const fetchUsers = async () => {
-    try {
-      const { data } = await axios.get("search/users?q=" + query);
-      // setUsers(users => data?.items)
-      console.log(data)
-      return data?.items;
-
-    }
-    catch(error){
-      console.error(error);
-      return null;
-    }
-  }
-
-  const handleSearch = async (e) => {
-    // e.preventDefault();
-    if(query){
-      const items = await fetchUsers();
-      setUsers(items);
-    }else{
-      console.log("No user found. Please try again.")
-    }
-
-  }
+  //Check for Enter Key Pressed
+  function handleKeyDown(e){
+    if(e.key === 'Enter') {
+      setQuery(e.target.value);
+      goToSearchPage();
+  }};
 
   return (
     <div className="Home"
@@ -76,10 +56,11 @@ function Home(props) {
         placeholder='Search Username'
         onMouseEnter={handleClick}
         onMouseOut={handleClick}
+        onKeyDown={handleKeyDown}
         style={{
           borderColor: isActive ? "#38A6FF" : ''}} />
       <Link to="/search">
-        <button onClick={handleSearch} id="homeSearchBTN">
+        <button id="homeSearchBTN">
           <SearchOutlined style={{fontSize:"18px"}} />
         </button>
       </Link>

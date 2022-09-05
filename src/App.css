@@ -19,6 +19,9 @@ html,body{
   font-size: calc(10px + 2vmin);
   color: white;
 }
+button{
+  cursor: pointer;
+}
 
 /* button {
   padding: 13px 30px 12px 30px;
