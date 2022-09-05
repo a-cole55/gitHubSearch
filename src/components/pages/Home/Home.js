@@ -7,7 +7,12 @@ function Home() {
 
   const [query, setQuery] = useState("");
   //Users fetched from API
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
+
+  const [isActive, setIsActive] = useState(false);
+  const handleClick = () => {
+    setIsActive(current => !current);
+  }
 
   const handleQueryInput = (e) => {
     const value = e.target.value;
@@ -38,7 +43,13 @@ function Home() {
       <h1> GitHub Search </h1>
       </div>
     <div id="search">
-      <input id="query" value={query} onChange={handleQueryInput} type="text" placeholder='Enter Username' />
+      <input id="query" value={query} 
+        onChange={handleQueryInput} 
+        type="text" 
+        onMouseEnter={handleClick}
+        onMouseOut={handleClick}
+        style={{
+          borderColor: isActive ? "#38A6FF" : ''}} />
       <button onClick={handleSearch} id="homeSearchBTN">Search</button>
     </div>
 

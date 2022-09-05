@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,300&display=swap'); */
 html,body{
   font-family: 'Montserrat', sans-serif;
+
 }
 *{
   box-sizing: border-box;
@@ -23,7 +24,7 @@ button {
   padding: 13px 30px 12px 30px;
   color: #FFF;
   background-color: #38A6FF;
-  font-size: 18px;
+  font: 18px 'Montserrat', sans-serif;
   text-align: center;
   font-style: normal;
   border-radius: 5px;
