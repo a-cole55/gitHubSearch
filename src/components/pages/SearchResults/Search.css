@@ -73,6 +73,16 @@ li a{
 #query:hover{
     border-color: "#38A6FF";
 }
+#homeLogo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+nav > a{
+    text-decoration: none;
+}
 #logo{
   width:40px;
   margin: 0 10px 0 30px;
@@ -83,6 +93,12 @@ h6{
     font-size: 18px;
 }
 #navSearchBTN{
+    color: #FFF;
+    background-color: #38A6FF;
+    font: 18px 'Montserrat', sans-serif;
+    text-align: center;
+    font-style: normal;
+    border: 1px solid#38A6FF;
   padding: 7px 17px 7.1px 17px;
   width: auto;
   border-width: 1px 1px 3px;
@@ -99,16 +115,25 @@ span{
     font-weight: bold;
 }
 .pagination{
-    border-top: 0.25px solid rgba(255,255,255, 0.5);
+    /* border-top: 0.25px solid rgba(255,255,255, 0.5); */
     width: 100%;
-    margin: 10px 20px;
+    margin: 10px 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 #searchHeader{
     margin: 40px 0 20px 0;
+}
+.totalResults{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:20px 100px;
+    /* border-bottom: 2px solid rgba(255,255,255, 0.5); */
+    width:100%;
 }
 .results{
     display: flex;
@@ -117,7 +142,7 @@ span{
     justify-content: center;
     padding:20px 100px;
     border-bottom: 2px solid rgba(255,255,255, 0.5);
-    width:80%;
+    width:100%;
 }
 .queryResult{
     display: flex;
@@ -126,13 +151,9 @@ span{
     justify-content: space-between;
     width: 100%;
 }
-/* .queryResult{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+.userInfo{
     width: 100%;
-} */
+}
 .searchImg{
     width:100px;
     height: 100px;
@@ -144,5 +165,5 @@ span{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
 }

@@ -1,12 +1,15 @@
 import React, { useState} from 'react';
+import { Link } from "react-router-dom";
 import Results from "../../Results";
 import "./Search.css";
 import logo from "../../../assets/github.png";
 import { SearchOutlined } from '@ant-design/icons';
-import profImg from "../../../assets/profile9.jpg"
 
 
-function SearchResults() {
+
+function SearchResults(props) {
+  let users = props.users;
+
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive(current => !current);
@@ -15,8 +18,12 @@ function SearchResults() {
     <div id="searchPage">
       <header>
         <nav>
-          <img src={logo} alt="github logo" id="logo" />
-          <h6>GitHub</h6>
+        <Link to="/">
+          <div id="homeLogo">
+              <img src={logo} alt="github logo" id="logo" />
+              <h6>GitHub</h6>
+          </div>
+        </Link>
           <div id="navSearch">
             <input type="text" name="userName" id="query" 
               onMouseEnter={handleClick}
@@ -33,13 +40,28 @@ function SearchResults() {
     </header>
     <h2 id="searchHeader">Search Results</h2>
     <div className='pagination'>
-      <div className='results'>
-          <Results img={profImg} 
+      <span>Total Results </span>
+      <div className='totalResults'>
+        {users.length > 0 ? users.map((user) =>{
+          return (
+            <div className='results'>
+            <Results 
+            img={user.avatar_url} 
+            name={user.login}
+            description={user.url.bio}
+            followers={user.url.followers}
+            repos={user.url.public_repos}
+            location={user.url.location}
+            url={user.url}
+            user={user} 
+            key={user.id}/> </div>
+        )}) : <h2>No user found. Please try again.</h2>}
+          {/* <Results img={profImg} 
             name="Justin" 
             description="Fullstack Software Developer based in Austin. I enjoy hiking, working out, and learning new skills to add to my coding tool belt" 
-            followers={"8"+" followers"}
-            repos={"30"+" repositories"}
-            location={"Location: "+ "Austin" }/>
+            followers="8"
+            repos="30"
+            location="Austin" /> */}
       </div>
     </div>
     </div>

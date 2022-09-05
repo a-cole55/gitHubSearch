@@ -49,12 +49,13 @@
     border-radius: 8px 0 0 8px;
   }
   #homeSearchBTN {
-    padding: 9px 30px;
-    font-size: 16px;
+    color: #FFF;
+    background-color: #38A6FF;
+    padding: 10px 20px 9px 20px;
+    font: 16px 'Montserrat', sans-serif;
     text-align: center;
     font-style: normal;
-    border-radius: 5px;
-    width: 120px;
+    width: 70px;
     border: 1px solid#38A6FF;
     border-width: 1px 1px 3px;
     box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;

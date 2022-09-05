@@ -8,10 +8,11 @@ function Results(props) {
           <h2>{props.name}</h2>
           <p>{props.description}</p>
           <div className='additionalInfo'>
-            <span>{props.followers}</span>
-            <span>{props.repos}</span>
-            <span>{props.location}</span>
+            <span>{props.followers} followers</span>
+            <span>{props.repos} repositories</span>
+            <span>Location: {props.location}</span>
           </div>
+          <a href={props.url}>View Profile</a>
         </div>
 
     </div>
