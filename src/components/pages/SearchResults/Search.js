@@ -120,21 +120,16 @@ return (
       <PaginationBTN className="paginationBTN" />
       <div className='totalResults'>
         {userInfo.length > 0 ? userInfo.map((user, index) =>{
-          // getUser(user)
           return (
             <div className='results' key={user.id}>
             <Results 
             user= {user}
             img={user.avatar_url} 
             name={user.login}
-
-
             description={user.bio}
             followers={user.followers}
             repos={user.public_repos}
             location={user.location}
-
-
             url={user.html_url}
             /> </div>
         )}) : <h2>No user found. Please try again.</h2>}

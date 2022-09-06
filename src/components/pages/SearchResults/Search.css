@@ -157,6 +157,10 @@ span{
 .userInfo{
     width: 100%;
 }
+#userInfo p{
+    width: 400px;
+    margin: 10px 0;
+}
 .searchImg{
     width:100px;
     height: 100px;
