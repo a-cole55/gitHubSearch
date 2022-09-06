@@ -12,16 +12,10 @@ import axios from 'axios';
 
 function SearchResults(props) {
    //Individual User Info
-  //  const [userInfo, setUserInfo] = useState([]);
-  //  const [bio, setBio] = useState("");
-   const [followers, setFollowers] = useState([]);
-   const [repos, setRepos] = useState([])
+   const [userInfo, setUserInfo] = useState([]);
 
   //darkMode/LightMode Switch
   const darkMode = props.darkMode;
-
-  //Users Fetched from API
-  const [users, setUsers] = useState([]);
 
   //Query Parameter
   const query = props.query;
@@ -42,50 +36,34 @@ function SearchResults(props) {
   useEffect(() => {
     axios.get(`https://api.github.com/search/users?q=${query}&per_page=10&page=${page}`, {
     }).then((response)=> {
-      console.log(response.data);
-      setUsers(response.data.items)
-      setTotalCount(response.data.total_count)
+      // console.log(response.data);
+      setTotalCount(response.data.total_count);
+		  const profileUrls = response.data.items;
+
+		const getUrls = profileUrls.map((userProfile) => {
+      return userProfile.url
+    });
+      console.log(getUrls);
+      getUserData(getUrls)
     })
     .catch(() => {
       console.error()
     });
-}, [page, query]);
+  }, [page, query]);
 
-// useEffect(() => {
-//   async function fetchData() {
-//     // You can await here
-//     const response = await MyAPI.getData(someId);
-//     // ...
-//   }
-//   fetchData();
-// }, [someId]); // Or [] 
-useEffect(() => {
 
-  let follower = [];
-  let repositories = [];
-  // let usersInfo = [];
-  users.map((user) => {
-    // await fetch(`https://api.github.com/users/${user.login}`)
-    // .then(result => result.data)
-      return fetch(`https://api.github.com/users/${user.login}`)
-      .then(response => response.json())
-      .then(response => {
-      console.log(response);
-      // console.log(response.public_repos);
-      follower.push(response.followers);
-      repositories.push(response.public_repos);
-      // usersInfo.push(response)
-      return response;
+const getUserData = (getUrls) => {
+  Promise.all(getUrls.map((url) => axios.get(url))).then(
+      axios.spread((...allData) => {
+      console.log({ allData });
+      let userData = allData.map((data) =>{
+        return data.data
+      });
+      console.log(userData);
+      setUserInfo(userData)
   })
-  });
-  setFollowers(follower);
-  setRepos(repositories)
-  // setUserInfo(usersInfo);
-  // console.log(userInfo);
-  // console.log(followers);
-  // console.log(repos)
-
-}, [users]);
+  )
+}
 
 //Pagination
   function PaginationBTN() {
@@ -141,7 +119,7 @@ return (
       <span>Total Results: {totalCount}</span>
       <PaginationBTN className="paginationBTN" />
       <div className='totalResults'>
-        {users.length > 0 ? users.map((user, index) =>{
+        {userInfo.length > 0 ? userInfo.map((user, index) =>{
           // getUser(user)
           return (
             <div className='results' key={user.id}>
@@ -151,10 +129,10 @@ return (
             name={user.login}
 
 
-            // description={user.bio}
-            followers={followers[index]}
-            repos={repos[index]}
-            // location={user.location}
+            description={user.bio}
+            followers={user.followers}
+            repos={user.public_repos}
+            location={user.location}
 
 
             url={user.html_url}
