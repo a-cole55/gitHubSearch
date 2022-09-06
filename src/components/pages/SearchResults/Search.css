@@ -149,7 +149,10 @@ span{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
+}
+.username{
+    color:#38A6FF;
 }
 .userInfo{
     width: 100%;
@@ -167,6 +170,22 @@ span{
     justify-content: space-between;
     width: 100%;
 }
+.additionalInfo span{
+    margin: 0 10px;
+}
+.additionalInfo span:first-child{
+    margin: 0 10px 0 0;
+}
 .paginationBTN{
     background-color: #38A6FF;
+}
+#paginationDisplay{
+    width:30px;
+    /* height:3em; */
+    border-radius: 0;
+    padding:2px 0;
+}
+#pageBTNS{
+    display: flex;
+    align-items: stretch;
 }

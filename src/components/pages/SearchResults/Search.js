@@ -140,9 +140,9 @@ function getUser(user) {
       }
 return (
     //Bootstrap Buttons
-  <ButtonGroup aria-label="Basic example">
+  <ButtonGroup aria-label="Basic example" id="pageBTNS">
     <Button variant="primary" style={{color: "black"}} onClick={prevPage}>&#8592;</Button>
-    <input className="currentPage" disabled value={page}/>
+    <input className="currentPage" disabled value={page} id="paginationDisplay" />
     <Button variant="secondary" style={{color: "black"}} onClick={nextPage}>&#8594;</Button>
   </ButtonGroup>
 );

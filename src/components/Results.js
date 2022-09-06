@@ -6,16 +6,15 @@ function Results(props, {user}) {
     <div className='queryResult'>
         <img src={props.img} alt="profile" className='searchImg' />
         <div id="userInfo">
-          <h2>{props.name}</h2>
-          <p>{props.description}</p>
+          <h2 className="username">{props.name}</h2>
+          <p>{props.description} BIO</p>
           <div className='additionalInfo'>
-            <span>{props.followers} followers</span>
-            <span>{props.repos} repositories</span>
+            <span>{props.followers} Followers</span>
+            <span>{props.repos} Repositories</span>
             <span>Location: {props.location}</span>
           </div>
-          <a href={props.url} target="_blank" rel="noreferrer" >View Profile</a>
         </div>
-
+        <a href={props.url} target="_blank" rel="noreferrer" >View Profile</a>
     </div>
   )
 }
