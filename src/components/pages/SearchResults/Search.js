@@ -12,10 +12,10 @@ import axios from 'axios';
 
 function SearchResults(props) {
    //Individual User Info
-  //  const [userInfo, setUserInfo] = useState([]);
+   const [userInfo, setUserInfo] = useState([]);
   //  const [bio, setBio] = useState("");
-  //  const [followers, setFollowers] = useState(0);
-  //  const [repos, setRepos] = useState(0)
+   const [followers, setFollowers] = useState(0);
+   const [repos, setRepos] = useState(0)
 
   //darkMode/LightMode Switch
   const darkMode = props.darkMode;
@@ -51,6 +51,81 @@ function SearchResults(props) {
     });
 }, [page, query]);
 
+// useEffect(() => {
+//   async function fetchData() {
+//     // You can await here
+//     const response = await MyAPI.getData(someId);
+//     // ...
+//   }
+//   fetchData();
+// }, [someId]); // Or [] 
+useEffect(() => {
+
+  // Promise.all(
+  //   users.map(
+  //     user => fetch(`https://api.github.com/users/${user.login}`)
+  //       .then(res => res.json())
+  //       .then(res => {
+  //         console.log(res)
+  //         return res
+  //       })
+  //   )
+  // ).then(url => {
+  //   const bios = url.map(profile_1 => profile_1.bio);
+  //   const locations = url.map(profile_2 => profile_2.location);
+  //   const followers = url.map(profile_3 => profile_3.followers);
+  //   const following = url.map(profile_4 => profile_4.following);
+  //   setBioArr(bios);
+  //   setUserLocation(locations);
+  //   setFollowersArr(followers);
+  //   setFollowingArr(following);
+  // });
+
+  let follower = [];
+  let repositories = [];
+  let usersInfo = [];
+  let user = users.map((user) => {
+    // await fetch(`https://api.github.com/users/${user.login}`)
+    // .then(result => result.data)
+      return fetch(`https://api.github.com/users/${user.login}`)
+      .then(response => response.json())
+      .then(response => {
+      console.log(response);
+      // console.log(response.public_repos);
+      follower.push(response.followers);
+      repositories.push(response.public_repos);
+      usersInfo.push(response)
+      return response;
+  })
+  });
+  setFollowers(follower);
+  setRepos(repositories)
+  setUserInfo(usersInfo);
+  // console.log(userInfo);
+  // console.log(followers);
+  // console.log(repos)
+
+
+
+  // async function fetchData() {
+  //   // You can await here
+  //   const response = await fetch(`https://api.github.com/users/${user.login}`);
+  //   console.log(response)
+  //   // ...
+  // }
+  // fetchData();
+
+  // return fetch(`https://api.github.com/users/${userInfo.login}`)
+  // .then(response => response.json())
+  // .then(response => {
+  //     console.log(response);
+  //     // setUserInfo(response);
+  //     return response;
+  // })
+  // .catch(() => {
+  //   console.error()
+  // });
+}, [users]);
 
 // useEffect(() => {
 //   axios.get(`https://api.github.com/search/users?q=${query}&per_page=10&page=${page}`, {
@@ -66,13 +141,15 @@ function SearchResults(props) {
 
 
 function getUser(user) {
-  return fetch(`https://api.github.com/users/${user.login}`)
-  .then(response => response.json())
-  .then(response => {
-      console.log(response);
-      // setUserInfo(response);
-      return response;
-  })
+  // return fetch(`https://api.github.com/users/${user.login}`)
+  // .then(response => response.json())
+  // .then(response => {
+  //     console.log(response);
+  //     // setUserInfo(response);
+  //     return response;
+  // })
+
+  setUserInfo(userInfo => user)
 }
 
 // then(data => {
@@ -177,8 +254,8 @@ return (
       <span>Total Results: {totalCount}</span>
       <PaginationBTN className="paginationBTN" />
       <div className='totalResults'>
-        {users.length > 0 ? users.map((user) =>{
-          getUser(user)
+        {users.length > 0 ? users.map((user, index) =>{
+          // getUser(user)
           return (
             <div className='results' key={user.id}>
             <Results 
@@ -187,9 +264,9 @@ return (
             name={user.login}
 
 
-            description={user.bio}
-            followers={user.followers}
-            repos={user.public_repos}
+            // description={user.bio}
+            followers={followers[index]}
+            repos={repos[index]}
             // location={user.location}
 
 
