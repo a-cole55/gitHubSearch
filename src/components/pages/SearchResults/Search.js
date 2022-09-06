@@ -12,10 +12,10 @@ import axios from 'axios';
 
 function SearchResults(props) {
    //Individual User Info
-   const [userInfo, setUserInfo] = useState([]);
-   const [bio, setBio] = useState("");
-   const [followers, setFollowers] = useState(0);
-   const [repos, setRepos] = useState(0)
+  //  const [userInfo, setUserInfo] = useState([]);
+  //  const [bio, setBio] = useState("");
+  //  const [followers, setFollowers] = useState(0);
+  //  const [repos, setRepos] = useState(0)
 
   //darkMode/LightMode Switch
   const darkMode = props.darkMode;
@@ -110,18 +110,18 @@ function getUser(user) {
   // });
   // }, [users]);
 
-  const fetchUserInfo = async (user) => {
-    try {
-      const { userData } = await axios.get(`https://api.github.com/users/${user.login}`);
-      console.log(userData)
-      return userData;
+  // const fetchUserInfo = async (user) => {
+  //   try {
+  //     const { userData } = await axios.get(`https://api.github.com/users/${user.login}`);
+  //     console.log(userData)
+  //     return userData;
 
-    }
-    catch(error){
-      console.error(error);
-      return null;
-    }
-  }
+  //   }
+  //   catch(error){
+  //     console.error(error);
+  //     return null;
+  //   }
+  // }
 
 //Pagination
   function PaginationBTN() {
@@ -159,7 +159,7 @@ return (
           </div>
         </Link>
           <div id="navSearch">
-            <input type="text" name="userName" id="query" 
+            <input type="text" value={query} name="userName" id="query" 
               onMouseEnter={handleClick}
               onMouseOut={handleClick}
               style={{
