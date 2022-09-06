@@ -4,8 +4,6 @@ import Results from "../../Results";
 import "./Search.css";
 import logo from "../../../assets/github.png";
 import { SearchOutlined } from '@ant-design/icons';
-// import PaginationBTN from "../../PaginationBTN";
-// import axios from '../../../axios';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import axios from 'axios';
@@ -15,7 +13,7 @@ import SearchContext from "../../../components/SearchContext";
 function SearchResults(props) {
    //darkMode/LightMode Switch
   const {darkMode} = useContext(SearchContext);
-  
+
     //Query Parameter
   const {query} = useContext(SearchContext);
  
@@ -36,6 +34,7 @@ function SearchResults(props) {
     setIsActive(current => !current);
   }
 
+  //Fetch Search Results from GitHub User Search API
   useEffect(() => {
     axios.get(`https://api.github.com/search/users?q=${query}&per_page=10&page=${page}`, {
     }).then((response)=> {
@@ -54,7 +53,7 @@ function SearchResults(props) {
     });
   }, [page, query]);
 
-
+//Fetch individual user info from GitHub User Profile API
 const getUserData = (getUrls) => {
   Promise.all(getUrls.map((url) => axios.get(url))).then(
       axios.spread((...allData) => {
@@ -68,7 +67,7 @@ const getUserData = (getUrls) => {
   )
 }
 
-//Pagination
+//Pagination Buttons
   function PaginationBTN() {
 
     const prevPage = () => {
@@ -83,15 +82,15 @@ const getUserData = (getUrls) => {
     const nextPage = () => {
       setPage(page => page + 1);
       }
-return (
-    //Bootstrap Buttons
-  <ButtonGroup aria-label="Basic example" id="pageBTNS">
-    <Button variant="primary" style={{color: "black"}} onClick={prevPage}>&#8592;</Button>
-    <input className="currentPage" disabled value={page} id="paginationDisplay" />
-    <Button variant="secondary" style={{color: "black"}} onClick={nextPage}>&#8594;</Button>
-  </ButtonGroup>
-);
-}
+    return (
+        //Bootstrap Buttons
+      <ButtonGroup aria-label="Basic example" id="pageBTNS">
+        <Button variant="primary" style={{color: "black"}} onClick={prevPage}>&#8592;</Button>
+        <input className="currentPage" disabled value={page} id="paginationDisplay" />
+        <Button variant="secondary" style={{color: "black"}} onClick={nextPage}>&#8594;</Button>
+      </ButtonGroup>
+    );
+  }
   return (
     <div id="searchPage"     
       style={{backgroundColor: darkMode ? "" : "#C3C1C1"}}>

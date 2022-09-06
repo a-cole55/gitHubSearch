@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Results(props, {user}) {
+function Results(props) {
 
   return (
     <div className='queryResult'>
