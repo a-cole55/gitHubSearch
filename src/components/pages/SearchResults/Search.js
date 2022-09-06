@@ -12,7 +12,7 @@ import axios from 'axios';
 
 function SearchResults(props) {
    //Individual User Info
-   const [userInfo, setUserInfo] = useState([]);
+  //  const [userInfo, setUserInfo] = useState([]);
   //  const [bio, setBio] = useState("");
    const [followers, setFollowers] = useState(0);
    const [repos, setRepos] = useState(0)
@@ -61,30 +61,10 @@ function SearchResults(props) {
 // }, [someId]); // Or [] 
 useEffect(() => {
 
-  // Promise.all(
-  //   users.map(
-  //     user => fetch(`https://api.github.com/users/${user.login}`)
-  //       .then(res => res.json())
-  //       .then(res => {
-  //         console.log(res)
-  //         return res
-  //       })
-  //   )
-  // ).then(url => {
-  //   const bios = url.map(profile_1 => profile_1.bio);
-  //   const locations = url.map(profile_2 => profile_2.location);
-  //   const followers = url.map(profile_3 => profile_3.followers);
-  //   const following = url.map(profile_4 => profile_4.following);
-  //   setBioArr(bios);
-  //   setUserLocation(locations);
-  //   setFollowersArr(followers);
-  //   setFollowingArr(following);
-  // });
-
   let follower = [];
   let repositories = [];
   let usersInfo = [];
-  let user = users.map((user) => {
+  users.map((user) => {
     // await fetch(`https://api.github.com/users/${user.login}`)
     // .then(result => result.data)
       return fetch(`https://api.github.com/users/${user.login}`)
@@ -100,105 +80,12 @@ useEffect(() => {
   });
   setFollowers(follower);
   setRepos(repositories)
-  setUserInfo(usersInfo);
+  // setUserInfo(usersInfo);
   // console.log(userInfo);
   // console.log(followers);
   // console.log(repos)
 
-
-
-  // async function fetchData() {
-  //   // You can await here
-  //   const response = await fetch(`https://api.github.com/users/${user.login}`);
-  //   console.log(response)
-  //   // ...
-  // }
-  // fetchData();
-
-  // return fetch(`https://api.github.com/users/${userInfo.login}`)
-  // .then(response => response.json())
-  // .then(response => {
-  //     console.log(response);
-  //     // setUserInfo(response);
-  //     return response;
-  // })
-  // .catch(() => {
-  //   console.error()
-  // });
 }, [users]);
-
-// useEffect(() => {
-//   axios.get(`https://api.github.com/search/users?q=${query}&per_page=10&page=${page}`, {
-//   }).then((response)=> {
-//     console.log(response.data);
-//     setUsers(response.data.items)
-//     setTotalCount(response.data.total_count)
-//   })
-//   .catch(() => {
-//     console.error()
-//   });
-// }, [page, query]);
-
-
-function getUser(user) {
-  // return fetch(`https://api.github.com/users/${user.login}`)
-  // .then(response => response.json())
-  // .then(response => {
-  //     console.log(response);
-  //     // setUserInfo(response);
-  //     return response;
-  // })
-
-  setUserInfo(userInfo => user)
-}
-
-// then(data => {
-//   this.setState({
-//     name: data.name,
-//     avatar_url: data.avatar_url,
-//     company: data.company,
-//     location: data.location,
-//     public_repos: data.public_repos,
-//     gists: data.public_gists,
-//     followers: data.followers,
-//     isLoading: false
-//   });
-
-
-// async handleSubmit(e) {
-//   e.preventDefault();
-//   let user = await this.getUser(this.refs.username.value);
-//   this.setState({username: user.login,
-//       id: user.id,
-//       url: user.url,
-//       avatar_url: user.avatar_url,
-//   });
-// }
-
-  // useEffect(() => {
-  // users.map((user) => {
-  //   axios.get(`user/${user.login}`, {
-  //   }).then((res)=> {
-  //     console.log(res.data)
-  //   })
-  //   .catch(() => {
-  //     console.error()
-  //   });
-  // });
-  // }, [users]);
-
-  // const fetchUserInfo = async (user) => {
-  //   try {
-  //     const { userData } = await axios.get(`https://api.github.com/users/${user.login}`);
-  //     console.log(userData)
-  //     return userData;
-
-  //   }
-  //   catch(error){
-  //     console.error(error);
-  //     return null;
-  //   }
-  // }
 
 //Pagination
   function PaginationBTN() {
