@@ -9,16 +9,19 @@ import { SearchOutlined } from '@ant-design/icons';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import axios from 'axios';
+import { useContext } from "react";
+import SearchContext from "../../../components/SearchContext";
 
 function SearchResults(props) {
+   //darkMode/LightMode Switch
+  const {darkMode} = useContext(SearchContext);
+  
+    //Query Parameter
+  const {query} = useContext(SearchContext);
+ 
+
    //Individual User Info
    const [userInfo, setUserInfo] = useState([]);
-
-  //darkMode/LightMode Switch
-  const darkMode = props.darkMode;
-
-  //Query Parameter
-  const query = props.query;
 
   //Pagination
   const [page, setPage] = useState(1);

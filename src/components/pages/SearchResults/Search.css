@@ -151,14 +151,14 @@ span{
     justify-content: space-between;
     width: 80%;
 }
-.username{
+.username, .queryResult > a{
     color:#38A6FF;
 }
 .userInfo{
     width: 100%;
 }
 #userInfo p{
-    width: 400px;
+    width: 450px;
     margin: 10px 0;
 }
 .searchImg{

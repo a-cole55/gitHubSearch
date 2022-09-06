@@ -4,6 +4,8 @@ import './Home.css';
 import logo from "../../../assets/github.png";
 import { SearchOutlined } from '@ant-design/icons';
 import SwitchBTN from '../../SwitchBTN';
+import { useContext } from "react";
+import SearchContext from "../../../components/SearchContext";
 
 
 function Home(props) {
@@ -11,14 +13,14 @@ function Home(props) {
   const navigate = useNavigate();
   const goToSearchPage = () => navigate('/search')
 
-  // const [query, setQuery] = useState("");
-  const query = props.query;
-  const setQuery = props.setQuery;
+  //Query Parameter
+   const {query} = useContext(SearchContext);
+   const {setQuery} = useContext(SearchContext);
+
 
   //darkMode/LightMode Switch
-  const darkMode = props.darkMode;
-  const setDarkMode = props.setDarkMode;
-
+  const {darkMode} = useContext(SearchContext);
+  const {setDarkMode} = useContext(SearchContext);
   const changeLightMode = () => {
     setDarkMode(darkMode => !darkMode);
     console.log("Dark Mode Changed");

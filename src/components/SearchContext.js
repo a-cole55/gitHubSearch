@@ -4,14 +4,16 @@ import { createContext, useState } from "react";
 const SearchContext = createContext();
 
 export function SearchProvider({children}){
-    const [total, setCartTotal] = useState(0);
-    const [cart, setCart] = useState([]);
-    const [totalQty, setTotalQty] = useState(0);
+    const [users, setUsers] = useState([]);
+    const [query, setQuery] = useState("");
+  
+    //darkMode/LightMode Switch
+    const [darkMode, setDarkMode] = useState(true)
 
 
 
     return(
-        <CartContext.Provider value={{total, setCartTotal, cart, setCart, totalQty, setTotalQty}}>{children}</CartContext.Provider>
+        <SearchContext.Provider value={{users, setUsers, query, setQuery, darkMode, setDarkMode}}>{children}</SearchContext.Provider>
     )
 }
-export default CartContext;
+export default SearchContext;
