@@ -13,7 +13,12 @@ import axios from 'axios';
 function SearchResults(props) {
    //Individual User Info
    const [userInfo, setUserInfo] = useState([]);
+   const [bio, setBio] = useState("");
+   const [followers, setFollowers] = useState(0);
+   const [repos, setRepos] = useState(0)
 
+  //darkMode/LightMode Switch
+  const darkMode = props.darkMode;
 
   //Users Fetched from API
   const [users, setUsers] = useState([]);
@@ -47,14 +52,42 @@ function SearchResults(props) {
 }, [page, query]);
 
 
+// useEffect(() => {
+//   axios.get(`https://api.github.com/search/users?q=${query}&per_page=10&page=${page}`, {
+//   }).then((response)=> {
+//     console.log(response.data);
+//     setUsers(response.data.items)
+//     setTotalCount(response.data.total_count)
+//   })
+//   .catch(() => {
+//     console.error()
+//   });
+// }, [page, query]);
+
+
 function getUser(user) {
   return fetch(`https://api.github.com/users/${user.login}`)
   .then(response => response.json())
   .then(response => {
-      console.log(response)
+      console.log(response);
+      // setUserInfo(response);
       return response;
   })
 }
+
+// then(data => {
+//   this.setState({
+//     name: data.name,
+//     avatar_url: data.avatar_url,
+//     company: data.company,
+//     location: data.location,
+//     public_repos: data.public_repos,
+//     gists: data.public_gists,
+//     followers: data.followers,
+//     isLoading: false
+//   });
+
+
 // async handleSubmit(e) {
 //   e.preventDefault();
 //   let user = await this.getUser(this.refs.username.value);
@@ -79,7 +112,7 @@ function getUser(user) {
 
   const fetchUserInfo = async (user) => {
     try {
-      const { userData } = await axios.get("user/" + user);
+      const { userData } = await axios.get(`https://api.github.com/users/${user.login}`);
       console.log(userData)
       return userData;
 
@@ -115,7 +148,8 @@ return (
 );
 }
   return (
-    <div id="searchPage">
+    <div id="searchPage"     
+      style={{backgroundColor: darkMode ? "" : "#C3C1C1"}}>
       <header>
         <nav>
         <Link to="/">
@@ -129,7 +163,7 @@ return (
               onMouseEnter={handleClick}
               onMouseOut={handleClick}
               style={{
-                borderColor: isActive ? "#38A6FF" : ''}} />
+                borderColor: isActive ? "#ABABAB" : ''}} />
             <button id="navSearchBTN"><SearchOutlined style={{fontSize:"18px"}} /></button>
           </div>
             <ul>
@@ -151,10 +185,14 @@ return (
             user= {user}
             img={user.avatar_url} 
             name={user.login}
+
+
             description={user.bio}
             followers={user.followers}
             repos={user.public_repos}
-            location={user.location}
+            // location={user.location}
+
+
             url={user.html_url}
             /> </div>
         )}) : <h2>No user found. Please try again.</h2>}

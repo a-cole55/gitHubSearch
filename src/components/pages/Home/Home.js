@@ -16,11 +16,13 @@ function Home(props) {
   const setQuery = props.setQuery;
 
   //darkMode/LightMode Switch
-  const [darkMode, setDarkMode] = useState(true)
+  const darkMode = props.darkMode;
+  const setDarkMode = props.setDarkMode;
 
   const changeLightMode = () => {
     setDarkMode(darkMode => !darkMode);
-    console.log("Dark Mode Changed")
+    console.log("Dark Mode Changed");
+    console.log(darkMode)
   }
 
   //Hover Effect for Search Bar
@@ -44,8 +46,10 @@ function Home(props) {
 
   return (
     <div className="Home"
-    style={{backgroundColor: darkMode ? "" : "white"}}>
-      <SwitchBTN onclick={changeLightMode} />
+    style={{backgroundColor: darkMode ? "" : "#ABABAB"}}>
+      <div onClick={changeLightMode}>
+        <SwitchBTN />
+      </div>
       <div id="header"><img src={logo} alt="github logo" />
       <h1> GitHub Search </h1>
       </div>
