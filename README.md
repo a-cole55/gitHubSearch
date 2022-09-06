@@ -1,4 +1,5 @@
 GitHub User Search
+![githubSearch](https://user-images.githubusercontent.com/94746691/188697336-60cbb9e0-8e00-43f4-8682-713bfc96c71c.png)
 
 Roadmap
  Users can search for GitHub users by username.
