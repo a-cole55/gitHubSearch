@@ -27,7 +27,7 @@ Proudest Accomplishment:
 My proudest accomplishment of this project is being able to fetch data from separate API's to gather the data needed for the search results of this page. Again, figuring this out was very challenging and took much more time than initially anticipated but I was able to get it done. 
 
 Future Contributions to this project:
-I would like to turn the search bar into it's own component and get the functionality working on the search page. For now, it just displays the original query from the home page. I would also like to implement useContext so that I'm not prop drilling. Also I plan to add a bit more information about each user to the search results page such as their bio/description and possibly their location. 
+I would like to turn the search bar into it's own component and get the functionality working on the search page. For now, it just displays the original query from the home page. I would also like to implement useContext so that I'm not prop drilling. Also I plan to add a bit more information about each user to the search results page such as their bio/description and possibly their location. Also, I plan to store the query into loca storage so that it doesn't disappear on refresh.
 
 
 
