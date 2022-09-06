@@ -14,8 +14,8 @@ function SearchResults(props) {
    //Individual User Info
   //  const [userInfo, setUserInfo] = useState([]);
   //  const [bio, setBio] = useState("");
-   const [followers, setFollowers] = useState(0);
-   const [repos, setRepos] = useState(0)
+   const [followers, setFollowers] = useState([]);
+   const [repos, setRepos] = useState([])
 
   //darkMode/LightMode Switch
   const darkMode = props.darkMode;
@@ -63,7 +63,7 @@ useEffect(() => {
 
   let follower = [];
   let repositories = [];
-  let usersInfo = [];
+  // let usersInfo = [];
   users.map((user) => {
     // await fetch(`https://api.github.com/users/${user.login}`)
     // .then(result => result.data)
@@ -74,7 +74,7 @@ useEffect(() => {
       // console.log(response.public_repos);
       follower.push(response.followers);
       repositories.push(response.public_repos);
-      usersInfo.push(response)
+      // usersInfo.push(response)
       return response;
   })
   });
