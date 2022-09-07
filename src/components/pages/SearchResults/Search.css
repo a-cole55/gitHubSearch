@@ -117,11 +117,14 @@ span{
 .pagination{
     /* border-top: 0.25px solid rgba(255,255,255, 0.5); */
     width: 100%;
-    margin: 10px 0;
+    margin: 0 0 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.pagination > span{
+    margin:20px 0;
 }
 #searchHeader{
     margin: 40px 0 20px 0;
@@ -153,6 +156,10 @@ span{
 }
 .username, .queryResult > a{
     color:#38A6FF;
+}
+.queryResult > a:hover{
+    color:white;
+    font-weight: bold;
 }
 .userInfo{
     width: 100%;
