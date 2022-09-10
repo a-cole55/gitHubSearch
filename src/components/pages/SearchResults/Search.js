@@ -111,8 +111,8 @@ const getUserData = (getUrls) => {
             <button id="navSearchBTN"><SearchOutlined style={{fontSize:"18px"}} /></button>
           </div>
             <ul>
-                <li><a href="/login"> Login</a></li>
-                <li><a href="/signup"> Signup</a></li>
+                <li><a href="https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsignup%3Fref_cta%3DSign%2Bup%26ref_loc%3Dheader%2Blogged%2Bout%26ref_page%3D%252F%26source%3Dheader-home"> Login</a></li>
+                <li><a href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"> Signup</a></li>
             </ul>
         </nav>
     </header>
