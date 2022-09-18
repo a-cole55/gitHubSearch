@@ -8,7 +8,7 @@ export function SearchProvider({children}){
     const [query, setQuery] = useState("");
   
     //darkMode/LightMode Switch
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('is-light')) || false);
 
 
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Home.css';
 import logo from "../../../assets/github.png";
 import SwitchBTN from '../../SwitchBTN';
@@ -11,11 +11,16 @@ function Home(props) {
   //darkMode/LightMode Switch
   const {darkMode} = useContext(SearchContext);
   const {setDarkMode} = useContext(SearchContext);
+  
   const changeLightMode = () => {
     setDarkMode(darkMode => !darkMode);
     console.log("Dark Mode Changed");
     console.log(darkMode)
   }
+
+  useEffect(() => {
+    localStorage.setItem('is-light', JSON.stringify(darkMode));
+  }, [darkMode]);
 
   return (
     <div className="Home"

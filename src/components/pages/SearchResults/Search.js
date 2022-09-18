@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Link } from "react-router-dom";
 import Results from "../../Results";
 import "./Search.css";
@@ -7,7 +7,6 @@ import { SearchOutlined } from '@ant-design/icons';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import axios from 'axios';
-import { useContext } from "react";
 import SearchContext from "../../../components/SearchContext";
 
 function SearchResults(props) {
@@ -16,6 +15,7 @@ function SearchResults(props) {
 
     //Query Parameter
   const {query} = useContext(SearchContext);
+  const {setQuery} = useContext(SearchContext);
  
 
    //Individual User Info
@@ -33,6 +33,17 @@ function SearchResults(props) {
   const handleClick = () => {
     setIsActive(current => !current);
   }
+
+  // const handleQueryInput = (e) => {
+  //   const value = e.target.value;
+  //   setQuery(value);
+
+  // }
+  //Check for Enter Key Pressed
+  function handleKeyDown(e){
+    if(e.key === 'Enter') {
+      setQuery(e.target.value);
+   }};
 
   //Fetch Search Results from GitHub User Search API
   useEffect(() => {
@@ -104,10 +115,12 @@ const getUserData = (getUrls) => {
         </Link>
           <div id="navSearch">
             <input type="text" value={query} name="userName" id="query" 
+              // onChange={handleQueryInput} 
+              onKeyDown={handleKeyDown}
               onMouseEnter={handleClick}
               onMouseOut={handleClick}
               style={{
-                borderColor: isActive ? "#ABABAB" : ''}} />
+                borderColor: isActive ? "#38A6FF" : ''}} />
             <button id="navSearchBTN"><SearchOutlined style={{fontSize:"18px"}} /></button>
           </div>
             <ul>
