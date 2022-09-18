@@ -5,7 +5,7 @@ const SearchContext = createContext();
 
 export function SearchProvider({children}){
     const [users, setUsers] = useState([]);
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(JSON.parse(sessionStorage.getItem('user-query')) || "");
   
     //darkMode/LightMode Switch
     const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('is-light')) || false);

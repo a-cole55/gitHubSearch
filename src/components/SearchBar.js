@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 import SearchContext from "./SearchContext";
 import { SearchOutlined } from '@ant-design/icons';
@@ -24,6 +24,10 @@ function SearchBar() {
     setQuery(value);
 
   }
+
+  useEffect(() => {
+    sessionStorage.setItem('user-query', JSON.stringify(query));
+  }, [query]);
 
   //Check for Enter Key Pressed
   function handleKeyDown(e){
