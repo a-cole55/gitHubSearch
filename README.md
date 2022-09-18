@@ -27,7 +27,7 @@ Proudest Accomplishment:
 My proudest accomplishment of this project is being able to fetch data from separate GitHub API's to gather the data needed for the search results of this page. Again, figuring this out was very challenging for me and took much more time than initially anticipated.
 
 Future Contributions to this project:
-I would like to turn the search bar into it's own component and get the functionality of it working on the search page. For now, it just displays the original query from the home page. Also, I plan to store the query/results into local storage so that it doesn't disappear on refresh.
+I would like to turn the search bar into it's own component and get the functionality of it working on the search page. For now, it just displays the original query from the home page. Also, I plan to store the query into session storage so that it doesn't disappear on refresh.
 
 
 
