@@ -144,7 +144,7 @@ span{
     align-items: center;
     justify-content: center;
     padding:20px 100px;
-    border-bottom: 2px solid rgba(255,255,255, 0.5);
+    /* border-bottom: 2px solid rgba(255,255,255, 0.5); */
     width:100%;
 }
 .queryResult{
@@ -153,6 +153,11 @@ span{
     align-items: center;
     justify-content: space-between;
     width: 80%;
+    background: linear-gradient(90deg, rgb(34, 41, 53), rgb(44, 51, 63));
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(0, 0, 0, 0.1);
 }
 .username, .queryResult > a{
     color:#38A6FF;
@@ -188,13 +193,14 @@ span{
     margin: 0 10px 0 0;
 }
 .paginationBTN{
-    background-color: #38A6FF;
+    background-color: rgb(34, 41, 53);
 }
 #paginationDisplay{
     width:30px;
     /* height:3em; */
     border-radius: 0;
     padding:2px 0;
+
 }
 #pageBTNS{
     display: flex;

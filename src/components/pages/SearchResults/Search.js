@@ -148,6 +148,7 @@ const getUserData = (getUrls) => {
             url={user.html_url}
             /> </div>
         )}) : <h2>No user found. Please try again.</h2>}
+        <PaginationBTN className="paginationBTN" />
       </div>
     </div>
     </div>
