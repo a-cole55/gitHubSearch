@@ -144,7 +144,7 @@ const getUserData = (getUrls) => {
             description={user.bio}
             followers={user.followers}
             repos={user.public_repos}
-            location={user.location}
+            location={user.location || "N/A"}
             url={user.html_url}
             /> </div>
         )}) : <h2>No user found. Please try again.</h2>}
