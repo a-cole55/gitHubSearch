@@ -114,6 +114,39 @@ h6{
 span{
     font-weight: bold;
 }
+#leftArrow, #rightArrow{
+    color:#FFF;
+    background-color: rgba(56, 166, 255, 0.3);
+    font: 18px 'Montserrat', sans-serif;
+    font-style: bold;
+    border: 1px solid rgba(56, 166, 255, 0.3);;
+    border-radius: 100px;
+  padding: 7px 17px 7.1px 17px;
+  width: 50px;
+  height: 50px;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+#leftArrow:hover, #rightArrow:hover{
+    background-color: #8a97a0;
+    border: 1px solid #8a97a0;
+}
+#leftArrow{
+    margin-right: 10px;
+}
+#rightArrow{
+    margin-left: 10px;
+}
+#paginationDisplay{
+    height:50px;
+    width:50px;
+    border-radius: 10px;
+    padding:1px 0;
+    background-color: rgba(56, 166, 255, 0.3);
+    color:#FFF
+}
 .pagination{
     /* border-top: 0.25px solid rgba(255,255,255, 0.5); */
     width: 100%;
@@ -194,13 +227,6 @@ span{
 }
 .paginationBTN{
     background-color: rgb(34, 41, 53);
-}
-#paginationDisplay{
-    width:30px;
-    /* height:3em; */
-    border-radius: 0;
-    padding:2px 0;
-
 }
 #pageBTNS{
     display: flex;

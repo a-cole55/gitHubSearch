@@ -94,12 +94,11 @@ const getUserData = (getUrls) => {
       setPage(page => page + 1);
       }
     return (
-        //Bootstrap Buttons
-      <ButtonGroup aria-label="Basic example" id="pageBTNS">
-        <Button variant="primary" style={{color: "black"}} onClick={prevPage}>&#8592;</Button>
-        <input className="currentPage" disabled value={page} id="paginationDisplay" />
-        <Button variant="secondary" style={{color: "black"}} onClick={nextPage}>&#8594;</Button>
-      </ButtonGroup>
+      <div id="pageBTNS">
+        <button id="leftArrow" onClick={prevPage}>&#8592;</button>
+        <input disabled value={page} id="paginationDisplay" />
+        <button id="rightArrow" onClick={nextPage}>&#8594;</button>
+      </div>
     );
   }
   return (
@@ -132,7 +131,6 @@ const getUserData = (getUrls) => {
     <h2 id="searchHeader">Search Results</h2>
     <div className='pagination'>
       <span>Total Results: {totalCount}</span>
-      <PaginationBTN className="paginationBTN" />
       <div className='totalResults'>
         {userInfo.length > 0 ? userInfo.map((user, index) =>{
           return (
