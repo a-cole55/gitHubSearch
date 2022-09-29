@@ -4,8 +4,6 @@ import Results from "../../Results";
 import "./Search.css";
 import logo from "../../../assets/github.png";
 import { SearchOutlined } from '@ant-design/icons';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import axios from 'axios';
 import SearchContext from "../../../components/SearchContext";
 
